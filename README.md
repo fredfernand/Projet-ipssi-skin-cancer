@@ -54,6 +54,9 @@ skin-cancer-ham10000/
 
 ## Jalons
 
+> 🏷️ **Tags Git disponibles** : Tous les jalons sont tagués avec les labels requis (`data`, `eda`, `ml`, `eval-ml`, `dl`, `opti-dl`, `eval-dl`, `deploy`).  
+> Consultez-les via `git tag -l` ou sur GitHub dans l'onglet **Releases/Tags**.
+
 ### Note 1 — Data Science & Baseline ML
 
 | Jalon | Contenu | Label Git |
@@ -126,9 +129,6 @@ Les modules `src/*.py` sont créés automatiquement par les cellules `%%writefil
 
 ---
 
-
-## Transparence IA
-claude 
 ### Outils utilisés
 | Catégorie | Outils | Usage |
 |-----------|--------|-------|
