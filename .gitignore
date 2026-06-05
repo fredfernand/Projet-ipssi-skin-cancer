@@ -1,0 +1,92 @@
+# ============================================================
+# .gitignore — Skin Cancer HAM10000 ML Project
+# ============================================================
+
+# Fichiers de génération
+generate_notebook.py
+generate_notebook_ham10000.py
+
+# -----------------------------------------------
+# DATASET — NE PAS VERSIONNER
+# -----------------------------------------------
+chest_xray/
+HAM10000_images_part1/
+HAM10000_images_part2/
+HAM10000_metadata.csv
+data/
+datasets/
+*.zip
+*.tar.gz
+
+# Dossiers kagglehub (cache local)
+~/.cache/kagglehub/
+.cache/
+
+# Modules src/ générés par %%writefile (non versionnés)
+src/data_wrangling.py
+src/eda_utils.py
+src/ml_models.py
+src/evaluate.py
+src/__init__.py
+
+# -----------------------------------------------
+# Environnements Python
+# -----------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+env/
+venv/
+.venv/
+ENV/
+.env
+
+# -----------------------------------------------
+# Jupyter / IPython
+# -----------------------------------------------
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# -----------------------------------------------
+# Modèles sauvegardés (peuvent être lourds)
+# -----------------------------------------------
+models/
+*.pkl
+*.joblib
+*.h5
+!best_model.h5
+*.keras
+*.pt
+*.pth
+
+# -----------------------------------------------
+# Screenshots / captures écran
+# -----------------------------------------------
+SCREEN/
+
+# -----------------------------------------------
+# Logs et résultats intermédiaires
+# -----------------------------------------------
+logs/
+runs/
+outputs/
+*.log
+
+# -----------------------------------------------
+# OS / IDE
+# -----------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# -----------------------------------------------
+# Distribution / build Python
+# -----------------------------------------------
+dist/
+build/
+*.egg-info/
