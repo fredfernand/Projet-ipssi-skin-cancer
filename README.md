@@ -38,7 +38,7 @@ skin-cancer-ham10000/
 │   ├── dl_models.py             (créé à l'exécution)
 │   ├── dl_advanced.py           (créé à l'exécution)
 │   └── dashboard.py             (créé à l'exécution)
-├── best_model.keras             ← Modèle EfficientNetB0 sauvegardé
+├── best_model.h5                ← Modèle EfficientNetB0 sauvegardé
 ├── README.md
 ├── requirements.txt
 └── .gitignore
@@ -100,12 +100,9 @@ Le dashboard utilise deux frameworks de communication professionnels :
 streamlit run src/dashboard.py
 ```
 
-> ⚠️ **Modèle non versionné dans Git** (`best_model.keras`, 31 MB)  
-> Pour récupérer le modèle entraîné, deux options :
-> 1. **Réentraîner** : exécuter le notebook jusqu'à la cellule "model.save('best_model.keras')"
-> 2. **Télécharger** : [best_model.keras (Google Drive)](https://drive.google.com/file/d/10z-cF09fudsFGuKiPoZjVil1O7xNWM9v/view?usp=sharing)
-> 
-> Une fois récupéré, placer `best_model.keras` à la racine du projet.
+> ⚠️ **Modèle inclus dans Git** (`best_model.h5`, 30 MB)  
+> Le modèle EfficientNetB0 fine-tuné est versionné dans le dépôt.
+> Pour réentraîner : exécuter le notebook jusqu'à la cellule "model.save('best_model.h5')".
 
 ---
 
@@ -130,11 +127,22 @@ Les modules `src/*.py` sont créés automatiquement par les cellules `%%writefil
 ---
 
 
+## Transparence IA
+claude 
+### Outils utilisés
+| Catégorie | Outils | Usage |
+|-----------|--------|-------|
+| **Développement** | GitHub Copilot, ChatGPT, Claude Sonnet | Aide au débogage, optimisation code, structuration README, génération dashboard Streamlit |
+| **Frameworks ML/DL** | scikit-learn, TensorFlow/Keras 3, NumPy, Pandas | Implémentation modèles, entraînement, évaluation |
+| **Visualisation** | Matplotlib, Seaborn, Plotly | Génération graphiques EDA, métriques, dashboard interactif |
+| **Déploiement** | Streamlit, h5py | Interface utilisateur, chargement modèle H5 |
+
 ### Limites rencontrées
-- Déséquilibre extrême (74× entre nv et df) → nécessite class_weight et augmentation
-- Recall mélanome à 64% → insuffisant pour un usage clinique réel (cible >95%)
-- Temps d'entraînement Transfer Learning ~30 min sur T4 GPU
-- Le dashboard nécessite le fichier `best_model.keras` pour fonctionner
+- **Déséquilibre extrême** : 74× entre la classe `nv` (5403 images) et `df` (73 images) → nécessite `class_weight` et augmentation de données
+- **Recall mélanome** : 64% → insuffisant pour un usage clinique réel (cible >95% pour éviter faux négatifs)
+- **Temps d'entraînement** : Transfer Learning ~30 min sur T4 GPU
+- **Compatibilité** : Migration Keras 3 → TF 2.15 nécessite patch manuel du fichier H5 (suppression `quantization_config`)
+- **Généralisation** : Modèle entraîné uniquement sur images dermatoscopiques HAM10000 (pas de photos smartphone)
 
 ---
 
